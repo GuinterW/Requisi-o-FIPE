@@ -1,5 +1,7 @@
-h1 {text-align: center; width:30% ; border:5px solid; border-radius:100px; border-color:green;}
-h2 {text-align: center; font-size: 150%;}
-#carros,#motos,#caminhoes {width: 50%; border: 5px solid; border-radius: 10px;}
+h1 {border: 5px solid;border-radius: 20px;}
+#counteiner {width:30%; text-align:center; margin:0 auto; font-size: 150%;}
+#preenchimento {width: 30%; margin:0 auto;}
+#carros,#motos,#caminhoes {border: 5px solid; border-radius: 10px;}
+#Select {text-align: center;}
 .cars, .motorcycles, .trucks {font-size: 200%;}
 .list-group-item {width:30%; text-align: center; margin: 0 auto;}
