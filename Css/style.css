@@ -1,0 +1,7 @@
+body {text-align: center;}
+h1 {text-align: center; width:30% ; border:5px solid; border-radius:100px; border-color:green;}
+h2 {text-align: center; font-size: 150%;}
+.cars {font-size: 200%;}
+.motorcycles {font-size: 200%;}
+.trucks {font-size: 200%;}
+.list-group-item {width:30%; text-align: center; margin: 0 auto;}
