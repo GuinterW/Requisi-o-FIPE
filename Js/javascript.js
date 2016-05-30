@@ -42,24 +42,24 @@ $(document).ready(function(){
 
 	function MarcasCaminhoes(){
 		RequesicaoMarcas(urlPadrao + 'caminhoes/marcas.json');
-		var k= $('.Marca').val();
 		$(".BotaoSelecionarMarcas").click(function(){
+			var k= $('.Marca').val();
+			console.log(k);
 			ModelosCaminhoes(k);
 		})
 	}
 
 	function ModelosCaminhoes(k){
-		$(".Modelo").show();
-		RequesicaoModelo(urlPadrao + 'caminhoes/veiculos/21.json');
+		$(".Modelo, .BotaoSelecionarModelo").show();
+		RequesicaoModelo(urlPadrao + 'caminhoes/veiculos/' + k + '.json');
 		var l= $('.Modelo').val();
-		$(".BotaoSelecionarModeloo").click(function(){
-
+		$(".BotaoSelecionarModelo").click(function(){
 		})
 	}
 
 	function RequesicaoModelo(endereco){
 		$.getJSON(endereco, function(database){
-			AtualizarSelectModelos();
+			AtualizarSelectModelos(database);
 		})
 	}
 
@@ -69,14 +69,19 @@ $(document).ready(function(){
 		})
 	}
 
-	function AtualizarSelectModelos(){
-
+	function AtualizarSelectModelos(database){
+		console.log(database);
+		var alternativas='';
+		for (var g=0; g<database.length; g++){
+			alternativas+='<option value=' + g + '>' + database[g].name + '</option>';
+		}
+		$(".Modelo").html(alternativas);
 	}
 
 	function AtualizarSelectMarcas(database){
 		var alternativas='';
 		for (var g=0; g<database.length; g++){
-			alternativas+='<option value=' + g + '>' + database[g].name + '</option>';
+			alternativas+='<option value=' + database[g].id + '>' + database[g].name + '</option>';
 		}
 		$(".Marca").html(alternativas);
 	}

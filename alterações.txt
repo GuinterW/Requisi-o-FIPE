@@ -1,1 +1,4 @@
 mudar nome das imagens (modificados)
+mudar icones (achar icones de mesmo tamanho)
+é possivel clicar mesmo fora do quadro
+ver pq puxa todos os modelos...
