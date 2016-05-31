@@ -24,14 +24,14 @@ $(document).ready(function(){
 
 	function Carros(){
 		$("#preenchimento").show();
-		$(".list-group, #counteiner, #motos, #caminhoes").hide();
-		RequesicaoMarcas(urlPadrao + 'carros/marcas.json');
+		$(".list-group, #counteiner, .BotaoSelecionarModelo, #motos, #caminhoes").hide();
+		MarcasCarros();
 	}
 
 	function Motos(){
 		$("#preenchimento").show();
-		$(".list-group, #counteiner, #carros, #caminhoes").hide();
-		RequesicaoMarcas(urlPadrao + 'motos/marcas.json');
+		$(".list-group, #counteiner, .BotaoSelecionarModelo, #carros, #caminhoes").hide();
+		MarcasMotos();
 	}
 
 	function Caminhoes(){
@@ -40,8 +40,43 @@ $(document).ready(function(){
 		MarcasCaminhoes();
 	}
 
+	function MarcasCarros(){
+		RequesicaoMarcas(urlPadrao + 'carros/marcas.json');
+		$(".Modelo").hide();
+		$(".BotaoSelecionarMarcas").click(function(){
+			var b= $('.Marca').val();
+			ModelosCarros(b);
+		})
+	}
+
+	function ModelosCarros(b){
+		$(".Modelo, .BotaoSelecionarModelo").show();
+			RequesicaoModelo(urlPadrao + 'carros/veiculos/' + b + '.json');
+		var l= $('.Modelo').val();
+		$(".BotaoSelecionarModelo").click(function(){
+		})
+	}
+
+	function MarcasMotos(){
+		RequesicaoMarcas(urlPadrao + 'motos/marcas.json');
+		$(".Modelo").hide();
+		$(".BotaoSelecionarMarcas").click(function(){
+			var y= $('.Marca').val();
+			ModelosMotos(y);
+		})
+	}
+
+	function ModelosMotos(y){
+		$(".Modelo, .BotaoSelecionarModelo").show();
+			RequesicaoModelo(urlPadrao + 'motos/veiculos/' + y + '.json');
+		var l= $('.Modelo').val();
+		$(".BotaoSelecionarModelo").click(function(){
+		})
+	}
+
 	function MarcasCaminhoes(){
 		RequesicaoMarcas(urlPadrao + 'caminhoes/marcas.json');
+		$(".Modelo").hide();
 		$(".BotaoSelecionarMarcas").click(function(){
 			var k= $('.Marca').val();
 			console.log(k);
@@ -51,7 +86,7 @@ $(document).ready(function(){
 
 	function ModelosCaminhoes(k){
 		$(".Modelo, .BotaoSelecionarModelo").show();
-		RequesicaoModelo(urlPadrao + 'caminhoes/veiculos/' + k + '.json');
+			RequesicaoModelo(urlPadrao + 'caminhoes/veiculos/' + k + '.json');
 		var l= $('.Modelo').val();
 		$(".BotaoSelecionarModelo").click(function(){
 		})
