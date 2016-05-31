@@ -1,16 +1,16 @@
 var urlPadrao = "http://fipeapi.appspot.com/api/1/";
 
 $(document).ready(function(){
-	inicio();
-	cliques();
+	Inicio();
+	Cliques();
 });
 
-	function inicio(){
+	function Inicio(){
 		$(".cars, .motorcycles, .trucks").show();
 		$("#preenchimento").hide();
 	}
 
-	function cliques(){
+	function Cliques(){
 		$(".cars").click(function(){
 			Carros();
 		});
@@ -24,21 +24,23 @@ $(document).ready(function(){
 
 	function Carros(){
 		$("#preenchimento").show();
-		$(".list-group, #counteiner, .BotaoSelecionarModelo, #motos, #caminhoes").hide();
+		$(".list-group,.BotaoSelecionarModelo,.BotaoSelecionarAno,#AnoCarro,#counteiner,#motos,#caminhoes").hide();
 		MarcasCarros();
 	}
 
 	function Motos(){
 		$("#preenchimento").show();
-		$(".list-group, #counteiner, .BotaoSelecionarModelo, #carros, #caminhoes").hide();
+		$(".list-group,.BotaoSelecionarModelo,.BotaoSelecionarAno,#AnoMoto,#counteiner,#carros,#caminhoes").hide();
 		MarcasMotos();
 	}
 
 	function Caminhoes(){
 		$("#preenchimento").show();
-		$(".list-group, #ModeloCaminhao, .BotaoSelecionarModelo, #counteiner, #motos, #carros").hide();
+		$(".list-group,.BotaoSelecionarModelo,.BotaoSelecionarAno,#AnoCaminhao,#ModeloCaminhao,#counteiner,#motos,#carros").hide();
 		MarcasCaminhoes();
 	}
+
+//FUNÇÕES REFERENTES AOS CARROS.
 
 	function MarcasCarros(){
 		RequesicaoMarcasCarros(urlPadrao + 'carros/marcas.json');
@@ -48,15 +50,59 @@ $(document).ready(function(){
 			ModelosCarros(car);
 		})
 	}
-
 	function ModelosCarros(car){
-		$("#ModeloCarro, .BotaoSelecionarModelo").show();
+		$("#ModeloCarro,.BotaoSelecionarModelo").show();
 			RequesicaoModelosCarros(urlPadrao + 'carros/veiculos/' + car + '.json');
 		$(".BotaoSelecionarModelo").click(function(){
 			var car2= $('#ModeloCarro').val();
-			(car2);
+			AnosCarros(car,car2);
 		})
 	}
+	function AnosCarros(car,car2){
+		$("#AnoCarro,.BotaoSelecionarAno").show();
+			RequesicaoAnosCarros(urlPadrao + 'carros/veiculo/' + car + '/' + car2 + '.json');
+		$(".BotaoSelecionarAno").click(function(){
+			'blablabla';
+		})
+	}
+	function RequesicaoMarcasCarros(endereco){
+		$.getJSON(endereco, function(database){
+			AtualizarSelectMarcasCarros(database);
+		})
+	}
+	function AtualizarSelectMarcasCarros(database){
+		var alternativas='';
+			for (var g=0; g<database.length; g++){
+				alternativas+='<option value=' + database[g].id + '>' + database[g].name + '</option>';
+			}
+		$("#MarcaCarro").html(alternativas);
+	}
+	function RequesicaoModelosCarros(endereco){
+		$.getJSON(endereco, function(database){
+			AtualizarSelectModelosCarros(database);
+		})
+	}
+	function AtualizarSelectModelosCarros(database){
+		var alternativas='';
+		for (var g=0; g<database.length; g++){
+			alternativas+='<option value=' + database[g].id + '>' + database[g].name + '</option>';
+		}
+		$("#ModeloCarro").html(alternativas);
+	}
+	function RequesicaoAnosCarros(endereco){
+		$.getJSON(endereco, function(database){
+			AtualizarSelectAnoCarro(database);
+		})
+	}
+	function AtualizarSelectAnoCarro(database){
+		var alternativas='';
+		for (var g=0; g<database.length; g++){
+			alternativas+='<option value=' + database[g].id + '>' + database[g].name + '</option>';
+		}
+		$("#AnoCarro").html(alternativas);
+	}
+
+//FUNÇÕES REFERENTES AS MOTOS.
 
 	function MarcasMotos(){
 		RequesicaoMarcasMotos(urlPadrao + 'motos/marcas.json');
@@ -67,15 +113,59 @@ $(document).ready(function(){
 			ModelosMotos(moto);
 		})
 	}
-
 	function ModelosMotos(moto){
 		$("#ModeloMoto, .BotaoSelecionarModelo").show();
 			RequesicaoModelosMotos(urlPadrao + 'motos/veiculos/' + moto + '.json');
 		$(".BotaoSelecionarModelo").click(function(){
 			var moto2= $('#ModeloMoto').val();
-			(moto2);
+			AnoMoto(moto,moto2);
 		})
 	}
+	function AnoMoto(moto,moto2){
+		$("#AnoMoto,.BotaoSelecionarAno").show();
+			RequesicaoAnosMotos(urlPadrao + 'motos/veiculo/' + moto + '/' + moto2 + '.json');
+		$(".BotaoSelecionarAno").click(function(){
+			'blablabla';
+		})
+	}
+	function RequesicaoMarcasMotos(endereco){
+		$.getJSON(endereco, function(database){
+			AtualizarSelectMarcasMotos(database);
+		})
+	}
+	function AtualizarSelectMarcasMotos(database){
+		var alternativas='';
+		for (var g=0; g<database.length; g++){
+			alternativas+='<option value=' + database[g].id + '>' + database[g].name + '</option>';
+		}
+		$("#MarcaMoto").html(alternativas);
+	}
+	function RequesicaoModelosMotos(endereco){
+		$.getJSON(endereco, function(database){
+			AtualizarSelectModelosMotos(database);
+		})
+	}
+	function AtualizarSelectModelosMotos(database){
+		var alternativas='';
+		for (var g=0; g<database.length; g++){
+			alternativas+='<option value=' + database[g].id + '>' + database[g].name + '</option>';
+		}
+		$("#ModeloMoto").html(alternativas);
+	}
+	function RequesicaoAnosMotos(endereco){
+		$.getJSON(endereco, function(database){
+			AtualizarSelectAnoMoto(database);
+		})
+	}
+	function AtualizarSelectAnoMoto(database){
+		var alternativas='';
+		for (var g=0; g<database.length; g++){
+			alternativas+='<option value=' + database[g].id + '>' + database[g].name + '</option>';
+		}
+		$("#AnoMoto").html(alternativas);
+	}
+
+//FUNÇÕES REFERENTES AOS CAMINHÕES.
 
 	function MarcasCaminhoes(){
 		RequesicaoMarcasCaminhoes(urlPadrao + 'caminhoes/marcas.json');
@@ -85,68 +175,26 @@ $(document).ready(function(){
 			ModelosCaminhoes(truck);
 		})
 	}
-
 	function ModelosCaminhoes(truck){
-		$("#ModeloCaminhao, .BotaoSelecionarModelo").show();
+		$("#ModeloCaminhao,.BotaoSelecionarModelo").show();
 			RequesicaoModelosCaminhoes(urlPadrao + 'caminhoes/veiculos/' + truck + '.json');
 		$(".BotaoSelecionarModelo").click(function(){
 			var truck2= $('#ModeloCaminhao').val();
-			(truck2);
+			AnoCaminhao(truck,truck2);
 		})
 	}
-
-	function RequesicaoMarcasCarros(endereco){
-		$.getJSON(endereco, function(database){
-			AtualizarSelectMarcasCarros(database);
+	function AnoCaminhao(truck,truck2){
+		$("#AnoCaminhao,.BotaoSelecionarAno").show();
+			RequesicaoAnosCaminhoes(urlPadrao + 'caminhoes/veiculo/' + truck + '/' + truck2 + '.json');
+		$(".BotaoSelecionarAno").click(function(){
+			'blablabla';
 		})
 	}
-
-	function RequesicaoMarcasMotos(endereco){
-		$.getJSON(endereco, function(database){
-			AtualizarSelectMarcasMotos(database);
-		})
-	}
-
 	function RequesicaoMarcasCaminhoes(endereco){
 		$.getJSON(endereco, function(database){
 			AtualizarSelectMarcasCaminhoes(database);
 		})
 	}
-
-	function RequesicaoModelosCarros(endereco){
-		$.getJSON(endereco, function(database){
-			AtualizarSelectModelosCarros(database);
-		})
-	}
-
-	function RequesicaoModelosMotos(endereco){
-		$.getJSON(endereco, function(database){
-			AtualizarSelectModelosMotos(database);
-		})
-	}
-
-	function RequesicaoModelosCaminhoes(endereco){
-		$.getJSON(endereco, function(database){
-			AtualizarSelectModelosCaminhoes(database);
-		})
-	}
-
-	function AtualizarSelectMarcasCarros(database){
-		var alternativas='';
-		for (var g=0; g<database.length; g++){
-			alternativas+='<option value=' + database[g].id + '>' + database[g].name + '</option>';
-		}
-		$("#MarcaCarro").html(alternativas);
-	}
-
-	function AtualizarSelectMarcasMotos(database){
-		var alternativas='';
-		for (var g=0; g<database.length; g++){
-			alternativas+='<option value=' + database[g].id + '>' + database[g].name + '</option>';
-		}
-		$("#MarcaMoto").html(alternativas);
-	}
-
 	function AtualizarSelectMarcasCaminhoes(database){
 		var alternativas='';
 		for (var g=0; g<database.length; g++){
@@ -154,38 +202,27 @@ $(document).ready(function(){
 		}
 		$("#MarcaCaminhao").html(alternativas);
 	}
-
-	function AtualizarSelectModelosCarros(database){
-		var alternativas='';
-		for (var g=0; g<database.length; g++){
-			alternativas+='<option value=' + g + '>' + database[g].name + '</option>';
-		}
-		$("#ModeloCarro").html(alternativas);
+	function RequesicaoModelosCaminhoes(endereco){
+		$.getJSON(endereco, function(database){
+			AtualizarSelectModelosCaminhoes(database);
+		})
 	}
-
-	function AtualizarSelectModelosMotos(database){
-		var alternativas='';
-		for (var g=0; g<database.length; g++){
-			alternativas+='<option value=' + g + '>' + database[g].name + '</option>';
-		}
-		$("#ModeloMoto").html(alternativas);
-	}
-
 	function AtualizarSelectModelosCaminhoes(database){
 		var alternativas='';
 		for (var g=0; g<database.length; g++){
-			alternativas+='<option value=' + g + '>' + database[g].name + '</option>';
+			alternativas+='<option value=' + database[g].id + '>' + database[g].name + '</option>';
 		}
 		$("#ModeloCaminhao").html(alternativas);
 	}
-
-/*função que testa a variável 'z' para que a primeira opção não seja escolhida.
-	function TesteVar(z){
-		var z = $('#Select').val();
-		if (z>0){
-			requesicaoEscritas(url + z);
+	function RequesicaoAnosCaminhoes(endereco){
+		$.getJSON(endereco, function(database){
+			AtualizarSelectAnoCaminhao(database);
+		})
+	}
+	function AtualizarSelectAnoCaminhao(database){
+		var alternativas='';
+		for (var g=0; g<database.length; g++){
+			alternativas+='<option value=' + database[g].id + '>' + database[g].name + '</option>';
 		}
-		else{
-			alert(mensagens.invalidez);
-		}
-	}*/
+		$("#AnoCaminhao").html(alternativas);
+	}
