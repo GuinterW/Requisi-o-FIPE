@@ -1,4 +1,5 @@
-mudar nome das imagens (modificados)
-mudar icones (achar icones de mesmo tamanho)
-é possivel clicar mesmo fora do quadro
-ver pq puxa todos os modelos...
+-mudar nome das imagens (modificados)
+-mudar icones (achar icones de mesmo tamanho)
+-é possivel clicar mesmo fora do quadro
+-é possivel mudar a marca e nao reseta o resto
+-otimizar codigo
