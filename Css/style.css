@@ -2,6 +2,6 @@ h1 {border: 5px solid;border-radius: 20px;}
 #counteiner {width:30%; text-align:center; margin:0 auto; font-size: 150%;}
 #preenchimento {width: 50%; margin:0 auto; text-align: center;}
 #carros,#motos,#caminhoes {border: 5px solid; border-radius: 10px;}
-.Marca,.Modelo {width: 50%;}
+#MarcaCarro,#ModeloCarro,#MarcaMoto,#ModeloMoto,#MarcaCaminhao,#ModeloCaminhao {width: 50%;}
 .cars, .motorcycles, .trucks {font-size: 200%;}
 .list-group-item {width:30%; text-align: center; margin: 0 auto;}
