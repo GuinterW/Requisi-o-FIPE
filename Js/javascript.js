@@ -24,19 +24,19 @@ $(document).ready(function(){
 
 	function Carros(){
 		$("#preenchimento").show();
-		$(".list-group,.BotaoSelecionarModelo,#ModeloCarro,.BotaoSelecionarAno,#AnoCarro,#escritas,#motos,#caminhoes").hide();
+		$(".list-group,.BotaoSelecionarModelo,#ModeloCarro,.BotaoSelecionarAno,#AnoCarro,#escritas,.motos,.caminhoes").hide();
 		MarcasCarros();
 	}
 
 	function Motos(){
 		$("#preenchimento").show();
-		$(".list-group,.BotaoSelecionarModelo,#ModeloMoto,.BotaoSelecionarAno,#AnoMoto,#escritas,#carros,#caminhoes").hide();
+		$(".list-group,.BotaoSelecionarModelo,#ModeloMoto,.BotaoSelecionarAno,#AnoMoto,#escritas,.carros,.caminhoes").hide();
 		MarcasMotos();
 	}
 
 	function Caminhoes(){
 		$("#preenchimento").show();
-		$(".list-group,.BotaoSelecionarModelo,#ModeloCaminhao,.BotaoSelecionarAno,#AnoCaminhao,#ModeloCaminhao,#escritas,#motos,#carros").hide();
+		$(".list-group,.BotaoSelecionarModelo,#ModeloCaminhao,.BotaoSelecionarAno,#AnoCaminhao,#ModeloCaminhao,#escritas,.motos,.carros").hide();
 		MarcasCaminhoes();
 	}
 
@@ -123,7 +123,6 @@ $(document).ready(function(){
 		RequesicaoMarcasMotos(urlPadrao + 'motos/marcas.json');
 		$(".BotaoSelecionarMarcas").click(function(){
 			var moto= $('#MarcaMoto').val();
-			console.log(moto);
 			ModelosMotos(moto);
 		})
 	}
