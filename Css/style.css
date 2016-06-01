@@ -6,3 +6,4 @@ h1 {border: 5px solid;border-radius: 20px;}
 .table-responsive {width: 50%;text-align: center;margin: 0 auto;border: 5px solid;border-radius: 10px;}
 .cars, .motorcycles, .trucks {font-size: 200%;}
 .list-group-item {width:30%; text-align: center; margin: 0 auto;}
+.table table-bordered{text-align: center;}

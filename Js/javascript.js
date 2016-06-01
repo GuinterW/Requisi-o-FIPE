@@ -66,7 +66,7 @@ $(document).ready(function(){
 		})
 	}
 	function CarroSelecionado(car,car2,car3){
-		RequisicaoCarroEscolhido(urlPadrao + 'carros/veiculo/' + car + '/' + car2 + '/' + car3 + '.json',car,car2,car3);
+		RequisicaoCarroEscolhido(urlPadrao + 'carros/veiculo/' + car + '/' + car2 + '/' + car3 + '.json');
 	}
 	function RequesicaoMarcasCarros(endereco){
 		$.getJSON(endereco, function(database){
@@ -104,17 +104,17 @@ $(document).ready(function(){
 		}
 		$("#AnoCarro").html(alternativas);
 	}
-	function RequisicaoCarroEscolhido(endereco,car,car2,car3){
+	function RequisicaoCarroEscolhido(endereco){
 		$.getJSON(endereco, function(database){
-			CarroEscolhido(database,car,car2,car3);
+			CarroEscolhido(database);
 		})
 	}
-	function CarroEscolhido(database,car,car2,car3){
+	function CarroEscolhido(database){
 		var alternativas='';
 		for (var g=0; g<database.length; g++){
 			alternativas+='<option value=' + database[g].id + '>' +  database[g].name + '</option>';
 		}
-		TabelaResultados(database,car,car2,car3);
+		TabelaResultados(database);
 	}
 
 //FUNÇÕES REFERENTES AS MOTOS.
@@ -139,8 +139,12 @@ $(document).ready(function(){
 		$("#AnoMoto,.BotaoSelecionarAno").show();
 			RequesicaoAnosMotos(urlPadrao + 'motos/veiculo/' + moto + '/' + moto2 + '.json');
 		$(".BotaoSelecionarAno").click(function(){
-			'blablabla';
+			var moto3= $('#AnoMoto').val();
+			MotoSelecionada(moto,moto2,moto3);
 		})
+	}
+	function MotoSelecionada(moto,moto2,moto3){
+		RequisicaoMotoEscolhida(urlPadrao + 'motos/veiculo/' + moto + '/' + moto2 + '/' + moto3 + '.json');
 	}
 	function RequesicaoMarcasMotos(endereco){
 		$.getJSON(endereco, function(database){
@@ -178,6 +182,18 @@ $(document).ready(function(){
 		}
 		$("#AnoMoto").html(alternativas);
 	}
+	function RequisicaoMotoEscolhida(endereco){
+		$.getJSON(endereco, function(database){
+			MotoEscolhida(database);
+		})
+	}
+	function MotoEscolhida(database){
+		var alternativas='';
+		for (var g=0; g<database.length; g++){
+			alternativas+='<option value=' + database[g].id + '>' +  database[g].name + '</option>';
+		}
+		TabelaResultados(database);
+	}
 
 //FUNÇÕES REFERENTES AOS CAMINHÕES.
 
@@ -200,8 +216,12 @@ $(document).ready(function(){
 		$("#AnoCaminhao,.BotaoSelecionarAno").show();
 			RequesicaoAnosCaminhoes(urlPadrao + 'caminhoes/veiculo/' + truck + '/' + truck2 + '.json');
 		$(".BotaoSelecionarAno").click(function(){
-			'blablabla';
+			var truck3= $('#AnoCaminhao').val();
+			CaminhaoSelecionado(truck,truck2,truck3);
 		})
+	}
+	function CaminhaoSelecionado(truck,truck2,truck3){
+		RequisicaoCaminhaoEscolhido(urlPadrao + 'caminhoes/veiculo/' + truck + '/' + truck2 + '/' + truck3 + '.json');
 	}
 	function RequesicaoMarcasCaminhoes(endereco){
 		$.getJSON(endereco, function(database){
@@ -239,25 +259,49 @@ $(document).ready(function(){
 		}
 		$("#AnoCaminhao").html(alternativas);
 	}
+	function RequisicaoCaminhaoEscolhido(endereco){
+		$.getJSON(endereco, function(database){
+			CaminhaoEscolhido(database);
+		})
+	}
+	function CaminhaoEscolhido(database){
+		var alternativas='';
+		for (var g=0; g<database.length; g++){
+			alternativas+='<option value=' + database[g].id + '>' +  database[g].name + '</option>';
+		}
+		TabelaResultados(database);
+	}
 
-	function TabelaResultados(database,car,car2,car3){
+//TABELA COM OS RESULTADOS.
+	function TabelaResultados(database){
 		$(".table-responsive").show();
-	//	var marca='';
 		var marca= database.marca + '<br>';
-		var modelo='';
 		var modelo= database.name + '<br>';
-		var ano_modelo='';
 		var ano_modelo= database.ano_modelo + '<br>';
-		var codigo_fipe='';
 		var codigo_fipe= database.fipe_codigo + '<br>';
-		//var data_consulta='';
-		//var data_consulta= database. + '<br>';
-		var preço_medio='';
+		var data_consulta= AtualizaRelogio() + '<br>';
 		var preço_medio= database.preco + '<br>';
 		$("#marca").html(marca);
 		$("#modelo").html(modelo);
 		$("#ano_modelo").html(ano_modelo);
 		$("#codigo_fipe").html(codigo_fipe);
-		$("#data_consulta").html(data_consulta);
 		$("#preço_medio").html(preço_medio);
 	}
+
+//FUNÇÃO  DO HORARIO DA CONSULTA.
+	function AtualizaRelogio(){ 
+		var momentoAtual = new Date();
+		var vhora = momentoAtual.getHours();
+		if (vhora < 10){ vhora = "0" + vhora;}
+		var vminuto = momentoAtual.getMinutes();		
+		if (vminuto < 10){ vminuto = "0" + vminuto;}
+		var vsegundo = momentoAtual.getSeconds();
+		if (vsegundo < 10){ vsegundo = "0" + vsegundo;}
+		var vdia = momentoAtual.getDate();		
+		if (vdia < 10){ vdia = "0" + vdia;}
+		var vmes = momentoAtual.getMonth() + 1;		
+		if (vmes < 10){ vmes = "0" + vmes;}
+		var vano = momentoAtual.getFullYear();
+ 			horario = vdia + "/" + vmes + "/" + vano + ' - ' + vhora + ":" + vminuto + ":" + vsegundo;
+ 		$("#data_consulta").html(horario);
+ 	}
