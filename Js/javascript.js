@@ -62,8 +62,11 @@ $(document).ready(function(){
 			RequesicaoAnosCarros(urlPadrao + 'carros/veiculo/' + car + '/' + car2 + '.json');
 		$(".BotaoSelecionarAno").click(function(){
 			var car3= $('#AnoCarro').val();
-			//TabelaResultados();
+			CarroSelecionado(car,car2,car3);
 		})
+	}
+	function CarroSelecionado(car,car2,car3){
+		RequisicaoCarroEscolhido(urlPadrao + 'carros/veiculo/' + car + '/' + car2 + '/' + car3 + '.json',car,car2,car3);
 	}
 	function RequesicaoMarcasCarros(endereco){
 		$.getJSON(endereco, function(database){
@@ -100,6 +103,18 @@ $(document).ready(function(){
 			alternativas+='<option value=' + database[g].id + '>' + database[g].name + '</option>';
 		}
 		$("#AnoCarro").html(alternativas);
+	}
+	function RequisicaoCarroEscolhido(endereco,car,car2,car3){
+		$.getJSON(endereco, function(database){
+			CarroEscolhido(database,car,car2,car3);
+		})
+	}
+	function CarroEscolhido(database,car,car2,car3){
+		var alternativas='';
+		for (var g=0; g<database.length; g++){
+			alternativas+='<option value=' + database[g].id + '>' +  database[g].name + '</option>';
+		}
+		TabelaResultados(database,car,car2,car3);
 	}
 
 //FUNÇÕES REFERENTES AS MOTOS.
@@ -225,11 +240,24 @@ $(document).ready(function(){
 		$("#AnoCaminhao").html(alternativas);
 	}
 
-	function TabelaResultados(database){
+	function TabelaResultados(database,car,car2,car3){
 		$(".table-responsive").show();
-		var alternativas='';
-		for (var g=0; g<database.length; g++){
-			alternativas+='<option value=' + database[g].fipe_marca + '>' + database[g].name + '</option>';
-		}
-		$("#marca").html(alternativas);
+	//	var marca='';
+		var marca= database.marca + '<br>';
+		var modelo='';
+		var modelo= database.name + '<br>';
+		var ano_modelo='';
+		var ano_modelo= database.ano_modelo + '<br>';
+		var codigo_fipe='';
+		var codigo_fipe= database.fipe_codigo + '<br>';
+		//var data_consulta='';
+		//var data_consulta= database. + '<br>';
+		var preço_medio='';
+		var preço_medio= database.preco + '<br>';
+		$("#marca").html(marca);
+		$("#modelo").html(modelo);
+		$("#ano_modelo").html(ano_modelo);
+		$("#codigo_fipe").html(codigo_fipe);
+		$("#data_consulta").html(data_consulta);
+		$("#preço_medio").html(preço_medio);
 	}
