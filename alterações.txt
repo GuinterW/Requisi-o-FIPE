@@ -3,3 +3,12 @@
 -é possivel clicar mesmo fora do quadro
 -é possivel mudar a marca e nao reseta o resto
 -otimizar codigo
+-responsabilidade tabela
+-dividir index
+
+
+BOOTSTRAP:
+tabela de resultados
+
+
+//fazer requisição para atualizar os itens, deixando somente um, e dai chamar a função 'TabelaResultados' colocando os itens nas caixas em branco.(acho que é semelhante ao do outro projeto)

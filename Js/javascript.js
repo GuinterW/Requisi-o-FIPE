@@ -6,8 +6,8 @@ $(document).ready(function(){
 });
 
 	function Inicio(){
-		$(".cars, .motorcycles, .trucks").show();
-		$("#preenchimento").hide();
+		$(".cars,.motorcycles,.trucks").show();
+		$("#preenchimento,.table-responsive").hide();
 	}
 
 	function Cliques(){
@@ -24,19 +24,19 @@ $(document).ready(function(){
 
 	function Carros(){
 		$("#preenchimento").show();
-		$(".list-group,.BotaoSelecionarModelo,.BotaoSelecionarAno,#AnoCarro,#counteiner,#motos,#caminhoes").hide();
+		$(".list-group,.BotaoSelecionarModelo,#ModeloCarro,.BotaoSelecionarAno,#AnoCarro,#escritas,#motos,#caminhoes").hide();
 		MarcasCarros();
 	}
 
 	function Motos(){
 		$("#preenchimento").show();
-		$(".list-group,.BotaoSelecionarModelo,.BotaoSelecionarAno,#AnoMoto,#counteiner,#carros,#caminhoes").hide();
+		$(".list-group,.BotaoSelecionarModelo,#ModeloMoto,.BotaoSelecionarAno,#AnoMoto,#escritas,#carros,#caminhoes").hide();
 		MarcasMotos();
 	}
 
 	function Caminhoes(){
 		$("#preenchimento").show();
-		$(".list-group,.BotaoSelecionarModelo,.BotaoSelecionarAno,#AnoCaminhao,#ModeloCaminhao,#counteiner,#motos,#carros").hide();
+		$(".list-group,.BotaoSelecionarModelo,#ModeloCaminhao,.BotaoSelecionarAno,#AnoCaminhao,#ModeloCaminhao,#escritas,#motos,#carros").hide();
 		MarcasCaminhoes();
 	}
 
@@ -44,7 +44,6 @@ $(document).ready(function(){
 
 	function MarcasCarros(){
 		RequesicaoMarcasCarros(urlPadrao + 'carros/marcas.json');
-		$("#ModeloCarro").hide();
 		$(".BotaoSelecionarMarcas").click(function(){
 			var car= $('#MarcaCarro').val();
 			ModelosCarros(car);
@@ -62,7 +61,8 @@ $(document).ready(function(){
 		$("#AnoCarro,.BotaoSelecionarAno").show();
 			RequesicaoAnosCarros(urlPadrao + 'carros/veiculo/' + car + '/' + car2 + '.json');
 		$(".BotaoSelecionarAno").click(function(){
-			'blablabla';
+			var car3= $('#AnoCarro').val();
+			//TabelaResultados();
 		})
 	}
 	function RequesicaoMarcasCarros(endereco){
@@ -106,7 +106,6 @@ $(document).ready(function(){
 
 	function MarcasMotos(){
 		RequesicaoMarcasMotos(urlPadrao + 'motos/marcas.json');
-		$("#ModeloMoto").hide();
 		$(".BotaoSelecionarMarcas").click(function(){
 			var moto= $('#MarcaMoto').val();
 			console.log(moto);
@@ -169,7 +168,6 @@ $(document).ready(function(){
 
 	function MarcasCaminhoes(){
 		RequesicaoMarcasCaminhoes(urlPadrao + 'caminhoes/marcas.json');
-		$("#ModeloCaminhao").hide();
 		$(".BotaoSelecionarMarcas").click(function(){
 			var truck= $('#MarcaCaminhao').val();
 			ModelosCaminhoes(truck);
@@ -225,4 +223,13 @@ $(document).ready(function(){
 			alternativas+='<option value=' + database[g].id + '>' + database[g].name + '</option>';
 		}
 		$("#AnoCaminhao").html(alternativas);
+	}
+
+	function TabelaResultados(database){
+		$(".table-responsive").show();
+		var alternativas='';
+		for (var g=0; g<database.length; g++){
+			alternativas+='<option value=' + database[g].fipe_marca + '>' + database[g].name + '</option>';
+		}
+		$("#marca").html(alternativas);
 	}
