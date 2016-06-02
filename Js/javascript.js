@@ -44,6 +44,7 @@ $(document).ready(function(){
 
 	function MarcasCarros(){
 		RequesicaoMarcasCarros(urlPadrao + 'carros/marcas.json');
+		$(".BotaoSelecionarMarcas").unbind();
 		$(".BotaoSelecionarMarcas").click(function(){
 			var car= $('#MarcaCarro').val();
 			ModelosCarros(car);
@@ -52,6 +53,10 @@ $(document).ready(function(){
 	function ModelosCarros(car){
 		$("#ModeloCarro,.BotaoSelecionarModelo").show();
 			RequesicaoModelosCarros(urlPadrao + 'carros/veiculos/' + car + '.json');
+			$('#MarcaCarro').on('change', function() {
+				$("#ModeloCarro,.BotaoSelecionarModelo,#AnoCarro,.BotaoSelecionarAno").hide();			
+			})
+			$(".BotaoSelecionarModelo").unbind();
 		$(".BotaoSelecionarModelo").click(function(){
 			var car2= $('#ModeloCarro').val();
 			AnosCarros(car,car2);
@@ -60,6 +65,10 @@ $(document).ready(function(){
 	function AnosCarros(car,car2){
 		$("#AnoCarro,.BotaoSelecionarAno").show();
 			RequesicaoAnosCarros(urlPadrao + 'carros/veiculo/' + car + '/' + car2 + '.json');
+			$('#ModeloCarro').on('change', function() {
+				$("#AnoCarro,.BotaoSelecionarAno").hide();			
+			})
+		$(".BotaoSelecionarAno").unbind();
 		$(".BotaoSelecionarAno").click(function(){
 			var car3= $('#AnoCarro').val();
 			CarroSelecionado(car,car2,car3);
@@ -121,6 +130,7 @@ $(document).ready(function(){
 
 	function MarcasMotos(){
 		RequesicaoMarcasMotos(urlPadrao + 'motos/marcas.json');
+		$(".BotaoSelecionarMarcas").unbind();
 		$(".BotaoSelecionarMarcas").click(function(){
 			var moto= $('#MarcaMoto').val();
 			ModelosMotos(moto);
@@ -129,6 +139,10 @@ $(document).ready(function(){
 	function ModelosMotos(moto){
 		$("#ModeloMoto, .BotaoSelecionarModelo").show();
 			RequesicaoModelosMotos(urlPadrao + 'motos/veiculos/' + moto + '.json');
+			$('#MarcaMoto').on('change', function() {
+				$("#ModeloMoto,.BotaoSelecionarModelo,#AnoMoto,.BotaoSelecionarAno").hide();			
+			})
+		$(".BotaoSelecionarModelo").unbind();
 		$(".BotaoSelecionarModelo").click(function(){
 			var moto2= $('#ModeloMoto').val();
 			AnoMoto(moto,moto2);
@@ -137,6 +151,10 @@ $(document).ready(function(){
 	function AnoMoto(moto,moto2){
 		$("#AnoMoto,.BotaoSelecionarAno").show();
 			RequesicaoAnosMotos(urlPadrao + 'motos/veiculo/' + moto + '/' + moto2 + '.json');
+			$('#ModeloMoto').on('change', function() {
+				$("#AnoMoto,.BotaoSelecionarAno").hide();			
+			})
+		$(".BotaoSelecionarAno").unbind();
 		$(".BotaoSelecionarAno").click(function(){
 			var moto3= $('#AnoMoto').val();
 			MotoSelecionada(moto,moto2,moto3);
@@ -198,6 +216,7 @@ $(document).ready(function(){
 
 	function MarcasCaminhoes(){
 		RequesicaoMarcasCaminhoes(urlPadrao + 'caminhoes/marcas.json');
+		$(".BotaoSelecionarMarcas").unbind();
 		$(".BotaoSelecionarMarcas").click(function(){
 			var truck= $('#MarcaCaminhao').val();
 			ModelosCaminhoes(truck);
@@ -206,6 +225,10 @@ $(document).ready(function(){
 	function ModelosCaminhoes(truck){
 		$("#ModeloCaminhao,.BotaoSelecionarModelo").show();
 			RequesicaoModelosCaminhoes(urlPadrao + 'caminhoes/veiculos/' + truck + '.json');
+			$('#MarcaCaminhao').on('change', function() {
+				$("#ModeloCaminhao,.BotaoSelecionarModelo,#AnoCaminhao,.BotaoSelecionarAno").hide();			
+			})
+		$(".BotaoSelecionarModelo").unbind();
 		$(".BotaoSelecionarModelo").click(function(){
 			var truck2= $('#ModeloCaminhao').val();
 			AnoCaminhao(truck,truck2);
@@ -214,6 +237,10 @@ $(document).ready(function(){
 	function AnoCaminhao(truck,truck2){
 		$("#AnoCaminhao,.BotaoSelecionarAno").show();
 			RequesicaoAnosCaminhoes(urlPadrao + 'caminhoes/veiculo/' + truck + '/' + truck2 + '.json');
+			$('#ModeloCaminhao').on('change', function() {
+				$("#AnoCaminhao,.BotaoSelecionarAno").hide();			
+			})
+		$(".BotaoSelecionarAno").unbind();
 		$(".BotaoSelecionarAno").click(function(){
 			var truck3= $('#AnoCaminhao').val();
 			CaminhaoSelecionado(truck,truck2,truck3);
@@ -274,6 +301,7 @@ $(document).ready(function(){
 //TABELA COM OS RESULTADOS.
 	function TabelaResultados(database){
 		$(".table-responsive,.AdicaoEdicao").show();
+		$("#preenchimento").hide();
 		var marca= database.marca + '<br>';
 		var modelo= database.name + '<br>';
 		var ano_modelo= database.ano_modelo + '<br>';
