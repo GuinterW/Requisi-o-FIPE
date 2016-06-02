@@ -6,37 +6,37 @@ $(document).ready(function(){
 });
 
 	function Inicio(){
-		$(".cars,.motorcycles,.trucks").show();
-		$("#preenchimento,.table-responsive").hide();
+		$("#escritas,.PrimeiroQuadro").show();
+		$("#preenchimento,.table-responsive,.AdicaoEdicao").hide();
 	}
 
 	function Cliques(){
-		$(".cars").click(function(){
+		$("#cars").click(function(){
 			Carros();
 		});
-		$(".motorcycles").click(function(){
+		$("#motorcycles").click(function(){
 			Motos();
 		});
-		$(".trucks").click(function(){
+		$("#trucks").click(function(){
 			Caminhoes();
 		});
 	}
 
 	function Carros(){
 		$("#preenchimento").show();
-		$(".list-group,.BotaoSelecionarModelo,#ModeloCarro,.BotaoSelecionarAno,#AnoCarro,#escritas,.motos,.caminhoes").hide();
+		$(".PrimeiroQuadro,.BotaoSelecionarModelo,#ModeloCarro,.BotaoSelecionarAno,#AnoCarro,#escritas,.motos,.caminhoes").hide();
 		MarcasCarros();
 	}
 
 	function Motos(){
 		$("#preenchimento").show();
-		$(".list-group,.BotaoSelecionarModelo,#ModeloMoto,.BotaoSelecionarAno,#AnoMoto,#escritas,.carros,.caminhoes").hide();
+		$(".PrimeiroQuadro,.BotaoSelecionarModelo,#ModeloMoto,.BotaoSelecionarAno,#AnoMoto,#escritas,.carros,.caminhoes").hide();
 		MarcasMotos();
 	}
 
 	function Caminhoes(){
 		$("#preenchimento").show();
-		$(".list-group,.BotaoSelecionarModelo,#ModeloCaminhao,.BotaoSelecionarAno,#AnoCaminhao,#ModeloCaminhao,#escritas,.motos,.carros").hide();
+		$(".PrimeiroQuadro,.BotaoSelecionarModelo,#ModeloCaminhao,.BotaoSelecionarAno,#AnoCaminhao,#ModeloCaminhao,#escritas,.motos,.carros").hide();
 		MarcasCaminhoes();
 	}
 
@@ -273,22 +273,25 @@ $(document).ready(function(){
 
 //TABELA COM OS RESULTADOS.
 	function TabelaResultados(database){
-		$(".table-responsive").show();
+		$(".table-responsive,.AdicaoEdicao").show();
 		var marca= database.marca + '<br>';
 		var modelo= database.name + '<br>';
 		var ano_modelo= database.ano_modelo + '<br>';
 		var codigo_fipe= database.fipe_codigo + '<br>';
-		var data_consulta= AtualizaRelogio() + '<br>';
+		var data_consulta= DataPesquisa() + '<br>';
 		var preço_medio= database.preco + '<br>';
 		$("#marca").html(marca);
 		$("#modelo").html(modelo);
 		$("#ano_modelo").html(ano_modelo);
 		$("#codigo_fipe").html(codigo_fipe);
 		$("#preço_medio").html(preço_medio);
+		$(".NovaPesquisa").click(function(){
+			Inicio();
+		})
 	}
 
 //FUNÇÃO  DO HORARIO DA CONSULTA.
-	function AtualizaRelogio(){ 
+	function DataPesquisa(){ 
 		var momentoAtual = new Date();
 		var vhora = momentoAtual.getHours();
 		if (vhora < 10){ vhora = "0" + vhora;}
