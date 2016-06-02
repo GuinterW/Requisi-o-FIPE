@@ -2,12 +2,12 @@ var urlPadrao = "http://fipeapi.appspot.com/api/1/";
 
 $(document).ready(function(){
 	Inicio();
-	Cliques();
 });
 
 	function Inicio(){
 		$("#escritas,.PrimeiroQuadro").show();
 		$("#preenchimento,.table-responsive,.AdicaoEdicao").hide();
+		Cliques();
 	}
 
 	function Cliques(){
