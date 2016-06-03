@@ -6,36 +6,39 @@ $(document).ready(function(){
 
 	function Inicio(){
 		$("#escritas,.PrimeiroQuadro").show();
-		$("#preenchimento,.table-responsive,.AdicaoEdicao").hide();
+		$("#FuncoesEspecificas,.table-responsive,.AdicaoEdicao").hide();
 		Cliques();
 	}
 
 	function Cliques(){
 		$("#cars").click(function(){
+			console.log('carros');
 			Carros();
 		});
 		$("#motorcycles").click(function(){
+			console.log('motos');
 			Motos();
 		});
 		$("#trucks").click(function(){
+			console.log('caminhoes');
 			Caminhoes();
 		});
 	}
 
 	function Carros(){
-		$("#preenchimento").show();
+		$("#FuncoesEspecificas,#MarcaCarro").show();
 		$(".PrimeiroQuadro,.BotaoSelecionarModelo,#ModeloCarro,.BotaoSelecionarAno,#AnoCarro,#escritas,.motos,.caminhoes").hide();
 		MarcasCarros();
 	}
 
 	function Motos(){
-		$("#preenchimento").show();
+		$("#FuncoesEspecificas,#MarcaMoto").show();
 		$(".PrimeiroQuadro,.BotaoSelecionarModelo,#ModeloMoto,.BotaoSelecionarAno,#AnoMoto,#escritas,.carros,.caminhoes").hide();
 		MarcasMotos();
 	}
 
 	function Caminhoes(){
-		$("#preenchimento").show();
+		$("#FuncoesEspecificas,#MarcaCaminhao").show();
 		$(".PrimeiroQuadro,.BotaoSelecionarModelo,#ModeloCaminhao,.BotaoSelecionarAno,#AnoCaminhao,#ModeloCaminhao,#escritas,.motos,.carros").hide();
 		MarcasCaminhoes();
 	}
@@ -301,21 +304,19 @@ $(document).ready(function(){
 //TABELA COM OS RESULTADOS.
 	function TabelaResultados(database){
 		$(".table-responsive,.AdicaoEdicao").show();
-		$("#preenchimento").hide();
-		var marca= database.marca + '<br>';
-		var modelo= database.name + '<br>';
-		var ano_modelo= database.ano_modelo + '<br>';
-		var codigo_fipe= database.fipe_codigo + '<br>';
-		var data_consulta= DataPesquisa() + '<br>';
-		var preço_medio= database.preco + '<br>';
-		$("#marca").html(marca);
-		$("#modelo").html(modelo);
-		$("#ano_modelo").html(ano_modelo);
-		$("#codigo_fipe").html(codigo_fipe);
-		$("#preço_medio").html(preço_medio);
+		$("#FuncoesEspecificas").hide();
+		var itens= '';
+		itens+= '<tr>' + '<td>' + database.marca + '</td>';
+		itens+= '<td>' + database.name + '</td>';
+		itens+= '<td>' + database.ano_modelo + '</td>';
+		itens+= '<td>' + database.fipe_codigo + '</td>';
+		DataPesquisa();
+		itens+= '<td>' + horario + '</td>';
+		itens+= '<td>' + database.preco + '</td>' + '</tr>';
+		$("#newLine").append(itens);
 		$(".NovaPesquisa").click(function(){
 			Inicio();
-		})
+		});
 	}
 
 //FUNÇÃO  DO HORARIO DA CONSULTA.
@@ -332,6 +333,5 @@ $(document).ready(function(){
 		var vmes = momentoAtual.getMonth() + 1;		
 		if (vmes < 10){ vmes = "0" + vmes;}
 		var vano = momentoAtual.getFullYear();
- 			horario = vdia + "/" + vmes + "/" + vano + ' - ' + vhora + ":" + vminuto + ":" + vsegundo;
- 		$("#data_consulta").html(horario);
+ 			horario = vdia + "/" + vmes + "/" + vano + ' - ' + vhora + ":" + vminuto + ":" + vsegundo + '<br>';
  	}

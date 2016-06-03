@@ -12,7 +12,7 @@
 	  	<script src="Js/bootstrap.min.js"></script>
 <!--	  	<link href="imagem/mlkicon.png" rel="icon" type="image/png">  -->
 	</head>
-	<body>
+	<body id="html">
 		<div id="escritas">
 			<h1 class="panel panel-default">Tabela de Preços DD!</h1><br>
 			<h1>Selecione abaixo o tipo de veículo!</h1><br>
@@ -35,7 +35,7 @@
 			</div>
 		</div>
 		<br><br><br><br>
-		<div id="preenchimento">
+		<div id="FuncoesEspecificas">
 			<div class="thumbnail carros"><br>
 				<img src="Imagens/carros/preto-modificado.png"/>  Carros<br><br>
 				<select id="MarcaCarro"></select>
@@ -77,21 +77,13 @@
 				   		<th>Preço Médio</th>
 				   	</tr>
 				</thead>
-				<tbody>
-		      		<tr>
-		        		<td id="marca"></td>
-		        		<td id="modelo"></td>
-		        		<td id="ano_modelo"></td>
-		        		<td id="codigo_fipe"></td>
-		        		<td id="data_consulta"></td>
-		        		<td id="preço_medio"></td>
-		      		</tr>
-		    	</tbody>
+				<tbody id="newLine">
+		      	</tbody>
 		  	</table>
 		</div>
 		<br>
 		<div class="AdicaoEdicao">
-		<button class="btn btn-primary NovaPesquisa">Fazer nova pesquisa</button>
+		<button class="btn btn-primary NovaPesquisa" href="index.html">Fazer nova pesquisa</button>
 		<button class="btn btn-primary EditarPesquisa">Editar pesquisa</button><br><br>
 		</div>
 	</body>
