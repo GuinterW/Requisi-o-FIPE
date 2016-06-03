@@ -1,14 +1,13 @@
 body {margin: 0 auto;text-align: center;}
-#escritas {width:45%; text-align:center; margin:0 auto; font-size: 150%;}
-#FuncoesEspecificas {width: 50%; margin:0 auto; text-align: center;}
-#carros,#motos,#caminhoes {border: 5px solid; border-radius: 10px;}
-.Marca,.Modelo,.Ano,.MarcaMoto,.ModeloMoto,.AnoMoto,.MarcaCaminhao,.ModeloCaminhao,.AnoCaminhao {width: 50%;}
-.cars_style, .motorcycles_style, .trucks_style {font-size: 200%; margin: 0 auto;}
-.list-group-item {width:30%; text-align: center; margin: 0 auto;}
-.table table-bordered{text-align: center;}
-.panel panel-default {border: 5px solid;border-radius: 20px;}
-.table-responsive {width: 60%;text-align: center;margin: 0 auto;}
+#escritas {width:45%; text-align:center; margin:0 auto;}
+#FuncoesEspecificas,.Marca,.Modelo,.Ano,.MarcaMoto,.ModeloMoto,.AnoMoto,.MarcaCaminhao,.ModeloCaminhao,.AnoCaminhao {width: 50%; margin:0 auto;}
+.cars_style, .motorcycles_style, .trucks_style {font-size: 200%;}
+.list-group-item {width:30%;text-align: center; margin: 0 auto;}
+.panel panel-default {border: 5px solid; border-radius: 20px;}
+.table-responsive {width: 60%; margin: 0 auto;}
 table tbody tr:nth-child(even){background-color: #CCC;}
 table tbody tr:nth-child(odd){background-color: #FFF;}
-table thead {text-align: center;}
-.imagens {width: 100%;padding: auto;}
+.image {width: 35%;text-align: left;}
+#image span{display: none;}
+#ibagens: hover span {display: block;}
+.cars_style:hover {URL:Imagens/carros/veiculo_branco.png}
