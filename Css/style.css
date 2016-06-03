@@ -2,7 +2,7 @@ body {margin: 0 auto;text-align: center;}
 #escritas {width:45%; text-align:center; margin:0 auto; font-size: 150%;}
 #FuncoesEspecificas {width: 50%; margin:0 auto; text-align: center;}
 #carros,#motos,#caminhoes {border: 5px solid; border-radius: 10px;}
-#MarcaCarro,#ModeloCarro,#AnoCarro,#MarcaMoto,#ModeloMoto,#AnoMoto,#MarcaCaminhao,#ModeloCaminhao,#AnoCaminhao {width: 50%;}
+.Marca,.Modelo,.Ano,.MarcaMoto,.ModeloMoto,.AnoMoto,.MarcaCaminhao,.ModeloCaminhao,.AnoCaminhao {width: 50%;}
 .cars_style, .motorcycles_style, .trucks_style {font-size: 200%; margin: 0 auto;}
 .list-group-item {width:30%; text-align: center; margin: 0 auto;}
 .table table-bordered{text-align: center;}
