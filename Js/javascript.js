@@ -47,35 +47,37 @@ $(document).ready(function(){
 		RequesicaoMarcas(urlPadrao + tipo + '/marcas.json');
 		$(".BotaoSelecionarMarcas").unbind();
 		$(".BotaoSelecionarMarcas").click(function(){
+			console.log(tipo2);
 			var tipo2= $('.Marca').val();
+			console.log(tipo2);
 			Modelos(tipo,tipo2);
-		})
+		});
 	}
 
 	function Modelos(tipo,tipo2){
 		$(".Modelo,.BotaoSelecionarModelo").show();
-			RequesicaoModelos(urlPadrao + tipo + '/veiculos/' + tipo2 + '.json');
-			$('.Marca').on('change', function() {
+		RequesicaoModelos(urlPadrao + tipo + '/veiculos/' + tipo2 + '.json');
+		$('.Marca').on('change', function() {
 				$(".Modelo,.BotaoSelecionarModelo,.Ano,.BotaoSelecionarAno").hide();			
-			})
+		});
 		$(".BotaoSelecionarModelo").unbind();
 		$(".BotaoSelecionarModelo").click(function(){
 			var tipo3= $('.Modelo').val();
 			Anos(tipo,tipo2,tipo3);
-		})
+		});
 	}
 
 	function Anos(tipo,tipo2,tipo3){
 		$(".Ano,.BotaoSelecionarAno").show();
-			RequesicaoAnos(urlPadrao + tipo + '/veiculo/' + tipo2 + '/' + tipo3 + '.json');
-			$('.Modelo').on('change', function() {
-				$(".Ano,.BotaoSelecionarAno").hide();			
-			})
+		RequesicaoAnos(urlPadrao + tipo + '/veiculo/' + tipo2 + '/' + tipo3 + '.json');
+		$('.Modelo').on('change', function() {
+			$(".Ano,.BotaoSelecionarAno").hide();			
+		});
 		$(".BotaoSelecionarAno").unbind();
 		$(".BotaoSelecionarAno").click(function(){
 			var tipo4= $('.Ano').val();
 			VeiculoSelecionado(tipo,tipo2,tipo3,tipo4);
-		})
+		});
 	}
 
 	function VeiculoSelecionado(tipo,tipo2,tipo3,tipo4){
@@ -85,7 +87,7 @@ $(document).ready(function(){
 	function RequesicaoMarcas(endereco){
 		$.getJSON(endereco, function(database){
 			AtualizarSelectMarcas(database);
-		})
+		});
 	}
 
 	function AtualizarSelectMarcas(database){
@@ -99,7 +101,7 @@ $(document).ready(function(){
 	function RequesicaoModelos(endereco){
 		$.getJSON(endereco, function(database){
 			AtualizarSelectModelos(database);
-		})
+		});
 	}
 
 	function AtualizarSelectModelos(database){
@@ -113,7 +115,7 @@ $(document).ready(function(){
 	function RequesicaoAnos(endereco){
 		$.getJSON(endereco, function(database){
 			AtualizarSelectAno(database);
-		})
+		});
 	}
 
 	function AtualizarSelectAno(database){
@@ -127,7 +129,7 @@ $(document).ready(function(){
 	function RequisicaoVeiculoEscolhido(endereco){
 		$.getJSON(endereco, function(database){
 			VeiculoEscolhido(database);
-		})
+		});
 	}
 
 	function VeiculoEscolhido(database){
