@@ -1,6 +1,6 @@
 body {margin: 0 auto;text-align: center;}
 #escritas {width:45%; text-align:center; margin:0 auto;}
-#FuncoesEspecificas,.Marca,.Modelo,.Ano,.MarcaMoto,.ModeloMoto,.AnoMoto,.MarcaCaminhao,.ModeloCaminhao,.AnoCaminhao {width: 50%; margin:0 auto;}
+#FuncoesEspecificas,.Marca,.Modelo,.Ano {width: 50%; margin:0 auto;}
 .cars_style, .motorcycles_style, .trucks_style {font-size: 200%;}
 .list-group-item {width:30%;text-align: center; margin: 0 auto;}
 .panel panel-default {border: 5px solid; border-radius: 20px;}

@@ -168,6 +168,7 @@ $(document).ready(function(){
 		itens+= '<td>' + horario + '</td>';
 		itens+= '<td>' + database.preco + '</td>' + '</tr>';
 		$("#newLine").append(itens);
+		$(".carros,.motos,.caminhoes,#cars,#motorcycles,#trucks").unbind();
 		$(".NovaPesquisa").click(function(){
 			Inicio();
 		});

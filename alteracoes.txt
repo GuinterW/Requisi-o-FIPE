@@ -1,0 +1,7 @@
+-dividir index
+-layout
+-nao mostra o ano na tabela resultados e sim '32000'
+-quando se adiciona mais de uma opção ele vai multiplicando a primeira requisição
+
+BOOTSTRAP:
+
