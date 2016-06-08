@@ -13,38 +13,38 @@
 	  	<link href="Imagens/mcqueen.jpg" rel="icon" type="image/jpg">
 	</head>
 	<body>
-		<div id="escritas">
-			<h1 class="panel panel-default">Tabela de Preços DD!</h1><br>
+		<div id="Escritas">
+			<h1 class="panel panel-default frase">Tabela de Preços DD!</h1><br>
 			<h1>Selecione abaixo o tipo de veículo!</h1><br>
 		</div>
 		<div class="list-group PrimeiroQuadro">
-			<div class="cars_style">
-				<a href="#carros" class="list-group-item" id="cars">
-				<img src="Imagens/carros/veiculo_preto.png" class="image"/> Carros</a>
+			<div class="TelaInicialCarros">
+				<a href="#carros" class="list-group-item" id="LinkCarros">
+				<img src="Imagens/carros/veiculo_preto.png" class="imagem"/> Carros</a>
 			</div>
-			<div class="motorcycles_style">
-				<a href="#motos" class="list-group-item" id="motorcycles">
-				<img src="Imagens/motos/veiculo_preto.png" class="image"/> Motos</a>
+			<div class="TelaInicialMotos">
+				<a href="#motos" class="list-group-item" id="LinkMotos">
+				<img src="Imagens/motos/veiculo_preto.png" class="imagem"/> Motos</a>
 			</div>
-			<div class="trucks_style">	
-				<a href="#caminhoes" class="list-group-item" id="trucks">
-				<img src="Imagens/caminhoes/veiculo_preto.png" class="image"/> Caminhões</a>
+			<div class="TelaInicialCaminhoes">	
+				<a href="#caminhoes" class="list-group-item" id="LinkCaminhoes">
+				<img src="Imagens/caminhoes/veiculo_preto.png" class="imagem"/> Caminhões</a>
 			</div>
 		</div>
 		<br>
 		<div id="FuncoesEspecificas">
-			<div class="thumbnail carros"> <img src="Imagens/carros/veiculo_preto.png"/>  Carros</div>				
-			<div class="thumbnail motos"> <img src="Imagens/motos/veiculo_preto.png"/>  Motos</div>
-			<div class="thumbnail caminhoes"> <img src="Imagens/caminhoes/veiculo_preto.png"/>  Caminhões</div>
-			<select class="Marca"></select>
+			<div class="thumbnail DivCarros"> <img src="Imagens/carros/veiculo_preto.png"/>  Carros</div>				
+			<div class="thumbnail DivMotos"> <img src="Imagens/motos/veiculo_preto.png"/>  Motos</div>
+			<div class="thumbnail DivCaminhoes"> <img src="Imagens/caminhoes/veiculo_preto.png"/>  Caminhões</div>
+			<select class="SelectMarca"></select>
 			<button class="btn btn-primary BotaoSelecionarMarcas">Selecionar</button><br><br>
-			<select class="Modelo"></select>
+			<select class="SelectModelo"></select>
 			<button class="btn btn-primary BotaoSelecionarModelo">Selecionar</button><br><br>
-			<select class="Ano"></select>
+			<select class="SelectAno"></select>
 			<button class="btn btn-primary BotaoSelecionarAno">Selecionar</button><br><br>
 		</div>
 		<br>
-		<div class="table-responsive">          
+		<div class="table-responsive TabelaResponsiva">          
 			<table class="thumbnail table table-bordered">
 				<thead>
 				   	<tr>
@@ -56,14 +56,13 @@
 				   		<th>Preço Médio</th>
 				   	</tr>
 				</thead>
-				<tbody id="newLine">
+				<tbody id="NovaLinha">
 		      	</tbody>
 		  	</table>
 		</div>
 		<br>
-		<div class="AdicaoEdicao">
-		<button class="btn btn-primary NovaPesquisa" href="index.html">Fazer nova pesquisa</button>
-		<button class="btn btn-primary EditarPesquisa">Editar pesquisa</button><br><br>
+		<div class="NovaOpcao">
+		<button class="btn btn-primary NovaPesquisa">Fazer nova pesquisa!</button>
 		</div>
 	</body>
 </html>

@@ -1,13 +1,10 @@
 body {margin: 0 auto;text-align: center;}
-#escritas {width:45%; text-align:center; margin:0 auto;}
-#FuncoesEspecificas,.Marca,.Modelo,.Ano {width: 50%; margin:0 auto;}
-.cars_style, .motorcycles_style, .trucks_style {font-size: 200%;}
-.list-group-item {width:30%;text-align: center; margin: 0 auto;}
-.panel panel-default {border: 5px solid; border-radius: 20px;}
-.table-responsive {width: 60%; margin: 0 auto;}
+#Escritas {width:45%; text-align:center; margin:0 auto;}
+.frase {border: 5px solid; border-radius: 20px;}
+.TelaInicialCarros,.TelaInicialMotos,.TelaInicialCaminhoes {font-size: 200%;}
+#LinkCarros,#LinkMotos,#LinkCaminhoes {width:30%;text-align: center; margin: 0 auto;}
+.Imagem {width: 35%;text-align: left;}
+#FuncoesEspecificas,.SelectMarca,.SelectModelo,.SelectAno {width: 50%; margin:0 auto;}
+.TabelaResponsiva {width: 60%; margin: 0 auto;}
 table tbody tr:nth-child(even){background-color: #CCC;}
 table tbody tr:nth-child(odd){background-color: #FFF;}
-.image {width: 35%;text-align: left;}
-#image span{display: none;}
-#ibagens: hover span {display: block;}
-.cars_style:hover {URL:Imagens/carros/veiculo_branco.png}

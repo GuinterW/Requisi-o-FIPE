@@ -5,77 +5,75 @@ $(document).ready(function(){
 });
 
 	function Inicio(){
-		$("#escritas,.PrimeiroQuadro").show();
-		$("#FuncoesEspecificas,.table-responsive,.AdicaoEdicao").hide();
+		$("#Escritas,.PrimeiroQuadro").show();
+		$("#FuncoesEspecificas,.TabelaResponsiva,.NovaOpcao").hide();
 		Cliques();
 	}
 
 	function Cliques(){
-		$("#cars").click(function(){
+		$("#LinkCarros").click(function(){
 			Carros();
 		});
-		$("#motorcycles").click(function(){
+		$("#LinkMotos").click(function(){
 			Motos();
 		});
-		$("#trucks").click(function(){
+		$("#LinkCaminhoes").click(function(){
 			Caminhoes();
 		});
 	}
 
 	function Carros(){
-		$("#FuncoesEspecificas,.carros").show();
-		$(".PrimeiroQuadro,.BotaoSelecionarModelo,.Modelo,.BotaoSelecionarAno,.Ano,.motos,.caminhoes,#escritas").hide();
+		$("#FuncoesEspecificas,.DivCarros").show();
+		$(".PrimeiroQuadro,.BotaoSelecionarModelo,.SelectModelo,.BotaoSelecionarAno,.SelectAno,.DivMotos,.DivCaminhoes,#Escritas").hide();
 		var tipo='carros';
-		Marcas(tipo);
+		exibirMarcas(tipo);
 	}
 
 	function Motos(){
-		$("#FuncoesEspecificas,.motos").show();
-		$(".PrimeiroQuadro,.BotaoSelecionarModelo,.Modelo,.BotaoSelecionarAno,.Ano,.carros,.caminhoes,#escritas").hide();
+		$("#FuncoesEspecificas,.DivMotos").show();
+		$(".PrimeiroQuadro,.BotaoSelecionarModelo,.SelectModelo,.BotaoSelecionarAno,.SelectAno,.DivCarros,.DivCaminhoes,#Escritas").hide();
 		var tipo='motos';
-		Marcas(tipo);
+		exibirMarcas(tipo);
 	}
 
 	function Caminhoes(){
-		$("#FuncoesEspecificas,.caminhoes").show();
-		$(".PrimeiroQuadro,.BotaoSelecionarModelo,.Modelo,.BotaoSelecionarAno,.Ano,.motos,.carros,#escritas").hide();
+		$("#FuncoesEspecificas,.DivCaminhoes").show();
+		$(".PrimeiroQuadro,.BotaoSelecionarModelo,.SelectModelo,.BotaoSelecionarAno,.SelectAno,.DivMotos,.DivCarros,#Escritas").hide();
 		var tipo='caminhoes';
-		Marcas(tipo);
+		exibirMarcas(tipo);
 	}
 	
-	function Marcas(tipo){
+	function exibirMarcas(tipo){
 		RequesicaoMarcas(urlPadrao + tipo + '/marcas.json');
 		$(".BotaoSelecionarMarcas").unbind();
 		$(".BotaoSelecionarMarcas").click(function(){
-			console.log(tipo2);
-			var tipo2= $('.Marca').val();
-			console.log(tipo2);
-			Modelos(tipo,tipo2);
+			var tipo2= $('.SelectMarca').val();
+			exibirModelos(tipo,tipo2);
 		});
 	}
 
-	function Modelos(tipo,tipo2){
-		$(".Modelo,.BotaoSelecionarModelo").show();
+	function exibirModelos(tipo,tipo2){
+		$(".SelectModelo,.BotaoSelecionarModelo").show();
 		RequesicaoModelos(urlPadrao + tipo + '/veiculos/' + tipo2 + '.json');
-		$('.Marca').on('change', function() {
-				$(".Modelo,.BotaoSelecionarModelo,.Ano,.BotaoSelecionarAno").hide();			
+		$('.SelectMarca').on('change', function() {
+				$(".SelectModelo,.BotaoSelecionarModelo,.SelectAno,.BotaoSelecionarAno").hide();			
 		});
 		$(".BotaoSelecionarModelo").unbind();
 		$(".BotaoSelecionarModelo").click(function(){
-			var tipo3= $('.Modelo').val();
-			Anos(tipo,tipo2,tipo3);
+			var tipo3= $('.SelectModelo').val();
+			exibirAnos(tipo,tipo2,tipo3);
 		});
 	}
 
-	function Anos(tipo,tipo2,tipo3){
-		$(".Ano,.BotaoSelecionarAno").show();
+	function exibirAnos(tipo,tipo2,tipo3){
+		$(".SelectAno,.BotaoSelecionarAno").show();
 		RequesicaoAnos(urlPadrao + tipo + '/veiculo/' + tipo2 + '/' + tipo3 + '.json');
-		$('.Modelo').on('change', function() {
-			$(".Ano,.BotaoSelecionarAno").hide();			
+		$('.SelectModelo').on('change', function() {
+			$(".SelectAno,.BotaoSelecionarAno").hide();			
 		});
 		$(".BotaoSelecionarAno").unbind();
 		$(".BotaoSelecionarAno").click(function(){
-			var tipo4= $('.Ano').val();
+			var tipo4= $('.SelectAno').val();
 			VeiculoSelecionado(tipo,tipo2,tipo3,tipo4);
 		});
 	}
@@ -95,7 +93,7 @@ $(document).ready(function(){
 			for (var g=0; g<database.length; g++){
 				alternativas+='<option value=' + database[g].id + '>' + database[g].name + '</option>';
 			}
-		$(".Marca").html(alternativas);
+		$(".SelectMarca").html(alternativas);
 	}
 
 	function RequesicaoModelos(endereco){
@@ -109,7 +107,7 @@ $(document).ready(function(){
 		for (var g=0; g<database.length; g++){
 			alternativas+='<option value=' + database[g].id + '>' + database[g].name + '</option>';
 		}
-		$(".Modelo").html(alternativas);
+		$(".SelectModelo").html(alternativas);
 	}
 
 	function RequesicaoAnos(endereco){
@@ -123,7 +121,7 @@ $(document).ready(function(){
 		for (var g=0; g<database.length; g++){
 			alternativas+='<option value=' + database[g].id + '>' + database[g].name + '</option>';
 		}
-		$(".Ano").html(alternativas);
+		$(".SelectAno").html(alternativas);
 	}
 
 	function RequisicaoVeiculoEscolhido(endereco){
@@ -157,7 +155,7 @@ $(document).ready(function(){
  	}
 
 	function TabelaResultados(database){
-		$(".table-responsive,.AdicaoEdicao").show();
+		$(".TabelaResponsiva,.NovaOpcao").show();
 		$("#FuncoesEspecificas").hide();
 		var itens= '';
 		itens+= '<tr>' + '<td>' + database.marca + '</td>';
@@ -167,8 +165,8 @@ $(document).ready(function(){
 		DataPesquisa();
 		itens+= '<td>' + horario + '</td>';
 		itens+= '<td>' + database.preco + '</td>' + '</tr>';
-		$("#newLine").append(itens);
-		$(".carros,.motos,.caminhoes,#cars,#motorcycles,#trucks").unbind();
+		$("#NovaLinha").append(itens);
+		$("#LinkCarros,#LinkMotos,#LinkCaminhoes,.DivCarros,.DivMotos,.DivCaminhoes,#NovaLinha").unbind();
 		$(".NovaPesquisa").click(function(){
 			Inicio();
 		});
